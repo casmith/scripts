@@ -2,7 +2,7 @@ mkdir -p ~/bin
 mkdir -p ~/work
 
 sudo apt update
-sudo apt upgrade
+sudo apt -y upgrade
 sudo apt install -y git zsh vim whois
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -25,8 +25,7 @@ curl -sSL https://get.rvm.io | bash -s stable
 rvm install ruby-2.6
 
 #install php
-sudo apt install mariadb-server
-sudo apt install php
+sudo apt install -y mariadb-server php
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"\
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'baf1608c33254d00611ac1705c1d9958c817a1a33bce370c0595974b342601bd80b92a3f46067da89e3b06bff421f182') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
