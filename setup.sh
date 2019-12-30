@@ -9,7 +9,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 #install sdk
 curl -s "https://get.sdkman.io" | bash
-source "/home/clay/.sdkman/bin/sdkman-init.sh"
+. "~/.sdkman/bin/sdkman-init.sh"
 
 # install java, etc. 
 sdk i gradle
@@ -17,11 +17,15 @@ sdk i java
 
 # install nvm and node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 nvm i stable
 
 #install rvm/ruby
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
+. ~/.rvm/scripts/rvm
 rvm install ruby-2.6
 
 #install php
